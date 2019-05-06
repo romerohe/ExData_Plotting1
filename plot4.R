@@ -13,44 +13,26 @@ for (i in 3:9) { ds[,i] <- as.numeric(ds[,i]) }
 #Setting frame 2x2
 par(mfrow=c(2,2),mar=c(3,4,2,2))
 
-names(par())
-
 #Making Plot 1
-plot.ts(ds$datetime,ds$Global_active_power,
-        ylab="Global Active Power",xlab="",type="l",xaxt="n")
-
-times <- ds$datetime
-ticks <- seq(times[1], times[length(times)], by = "days")
-axis(1, at = ticks, labels = format(ticks,"%a"))
+plot(ds$datetime, ds$Global_active_power, type="l",
+     ylab="Global Active Power", xlab="")
 
 #Making Plot 2
-plot.ts(ds$datetime,ds$Voltage,
-        ylab="Voltage",xlab="datetime",type="l",xaxt="n")
-
-times <- ds$datetime
-ticks <- seq(times[1], times[length(times)], by = "days")
-axis(1, at = ticks, labels = format(ticks,"%a"))
+plot(ds$datetime, ds$Voltage, type="l",
+     ylab="Voltage", xlab="datetime")
 
 #Making Plot 3
-plot.ts(ds$datetime,ds$Sub_metering_1,
-        ylab="Energy sub metering",xlab="",type="l",xaxt="n", col="black")
-points(ds$datetime,ds$Sub_metering_2, type="l", col="red")
-points(ds$datetime,ds$Sub_metering_3, type="l", col="blue")
-
-times <- ds$datetime
-ticks <- seq(times[1], times[length(times)], by = "days")
-axis(1, at = ticks, labels = format(ticks,"%a"))
+plot(ds$datetime, ds$Sub_metering_1, type="l",
+     ylab="Energy sub metering", xlab="", col="black")
+lines(ds$datetime,ds$Sub_metering_2, col="red")
+lines(ds$datetime,ds$Sub_metering_3, col="blue")
 
 legend("topright",legend=paste0("Sub_metering_",c(1:3)),
        col=c("black","red","blue"),lwd=0.1)
 
 #Making Plot 4
-plot.ts(ds$datetime,ds$Global_reactive_power,
-        ylab="Global_reactive_power",xlab="datetime",type="l",xaxt="n")
-
-times <- ds$datetime
-ticks <- seq(times[1], times[length(times)], by = "days")
-axis(1, at = ticks, labels = format(ticks,"%a"))
+plot(ds$datetime, ds$Voltage, type="l",
+     ylab="Global_reactive_power", xlab="datetime")
 
 
 #Exporting to .png

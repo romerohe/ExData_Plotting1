@@ -10,13 +10,12 @@ ds$datetime <- as.POSIXct(ds$datetime,format="%d/%m/%Y %H:%M:%S")
 
 for (i in 3:9) { ds[,i] <- as.numeric(ds[,i]) }
 
-#Plot making
-plot.ts(ds$datetime,ds$Global_active_power,
-        ylab="Global Active Power (kilowatts)",xlab="",type="l",xaxt="n")
+#Setting frame 1x1
+par(mfrow=c(1,1),mar=c(3,4,2,2))
 
-times <- ds$datetime
-ticks <- seq(times[1], times[length(times)], by = "days")
-axis(1, at = ticks, labels = format(ticks,"%a"))
+#Plot making
+plot(ds$datetime, ds$Global_active_power, type="l",
+     ylab="Global Active Power (kilowatts)", xlab="")
 
 #Exporting to .png
 dev.copy(png,"plot2.png",width=480,height=480)
