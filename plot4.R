@@ -31,7 +31,7 @@ legend("topright",legend=paste0("Sub_metering_",c(1:3)),
        col=c("black","red","blue"),lwd=0.1)
 
 #Making Plot 4
-plot(ds$datetime, ds$Voltage, type="l",
+plot(ds$datetime, ds$Global_reactive_power, type="l",
      ylab="Global_reactive_power", xlab="datetime")
 
 
